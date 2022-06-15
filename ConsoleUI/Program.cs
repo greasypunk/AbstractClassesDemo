@@ -18,6 +18,7 @@ namespace ConsoleUI
 
             /*
              * Create an abstract class called Vehicle
+             * 
              * The vehicle class shall have three string properties Year, Make, and Model
              * Set the defaults to something generic in the Vehicle class
              * Vehicle shall have an abstract method called DriveAbstract with no implementation
@@ -46,8 +47,20 @@ namespace ConsoleUI
 
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
-            Console.ReadLine();
+            #endregion
+
+            Car cruiser = new Car() { hasWindows = true, hatchback = true, Make = "Chrysler", Model = "PT Cruiser", Year = 2010 };
+            Motorcycle smokey = new Motorcycle() { hasWindows = false, looksCool = true, Make = "Honda", Model = "LaBomba", Year = 2022};
+            Vehicle turd = new Car() { hasWindows = true, hatchback = false, Make = "Toyota", Model = "Tacoma", Year = 2020};
+            Vehicle speedracer = new Motorcycle() { hasWindows = false, looksCool = true, Make = "Schwinn", Model = "XYZ", Year = 1991};
+            List<Vehicle> vehicles = new List<Vehicle>() { cruiser, smokey, turd, speedracer};
+            foreach (var vehicle in vehicles)
+                Console.WriteLine($"{vehicle.GetType().Name}: Make: {vehicle.Make}, Model: {vehicle.Model}, Year: {vehicle.Year}, has windows: {vehicle.hasWindows}");
+            cruiser.DriveAbstract();
+            cruiser.DriveVirtual();
+            speedracer.DriveAbstract();
+            speedracer.DriveVirtual();
+            //Console.ReadLine();
         }
     }
 }
